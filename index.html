@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="김서환의 AI Engineer 포트폴리오. 데이터 분석과 전처리, Agent 품질 검증, AI 모델 개선 및 데이터 시각화 경험을 소개합니다.">
+  <meta name="theme-color" content="#365c53">
+  <title>김서환 | Portfolio</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header"><a href="#home" class="wordmark">김서환</a><nav aria-label="주 메뉴"><a href="#projects">프로젝트</a><a href="#capabilities">기술</a></nav></header>
+  <main id="main">
+    <section class="intro" id="home" aria-labelledby="intro-title">
+      <div class="intro-copy"><h1 id="intro-title">김서환</h1>
+      <p class="intro-text">데이터 분석과 AI 모델 개선, LLM 기반 업무 자동화 및 서비스 개발을 경험했습니다.<br>문제를 분석하고 구현한 결과를 검증해 실제 활용으로 연결하는 데 관심이 있습니다.</p>
+      <div class="intro-meta"><span>성균관대학교 소프트웨어학과</span><a href="mailto:kksh3549@gmail.com">kksh3549@gmail.com</a></div></div>
+      <img class="profile-photo" src="./assets/profile.jpeg" alt="김서환 프로필 사진" width="1102" height="1417" decoding="async">
+    </section>
+    <section id="projects" class="projects" aria-labelledby="projects-title"><div class="section-heading"><h2 id="projects-title">프로젝트</h2></div>
+      <article class="project" id="dacon" aria-labelledby="dacon-title">
+        <div class="project-meta"><div class="project-heading"><span class="project-number">01<span aria-hidden="true"> - </span></span><h3 id="dacon-title">Dacon</h3></div><p class="project-date">2026.04 - 2026.05</p><p class="role">스마트 물류창고 출고 지연 예측 대회</p></div>
+        <div class="project-body"><p class="project-subtitle">물류 데이터 전처리 및 출고 지연 예측</p><p class="stage-label">배경</p><p class="problem">약 <strong>25만 건의 물류창고 스냅샷 데이터</strong>를 분석해 출고 지연 시간을 예측했습니다. 현재 상태뿐 아니라 시간에 따른 변화와 누적 흐름을 모델에 반영하는 데 집중했습니다.</p><p class="stage-label">구현</p><ul class="work-list"><li>EDA로 지표의 시간적 패턴을 분석하고, 변화량과 누적 평균 등을 반영한 <strong>288개 파생변수</strong>를 설계했습니다.</li><li>같은 시나리오의 데이터가 학습과 검증에 동시에 포함되지 않도록 <strong>시나리오 기준 GroupKFold</strong>를 적용했습니다. LightGBM, CatBoost, XGBoost, ExtraTrees 모델을 비교하고 앙상블을 구성했습니다.</li><li>SHAP으로 변수 기여도를 분석했습니다. 혼잡도 <strong>누적 평균의 기여도는 최대 31%, 순간값은 1%</strong>로 나타났습니다. 시간 흐름을 반영한 변수의 효과를 해석했습니다.</li></ul><p class="outcome"><span>결과</span><strong>MAE 7% 개선</strong> 및 대회 <strong>상위 13%</strong></p><div class="tags" aria-label="사용 기술"><span>Python</span><span>LightGBM</span><span>CatBoost</span><span>GroupKFold</span><span>SHAP</span></div></div>
+      </article>
+      <article class="project" id="clarifytrial" aria-labelledby="clarifytrial-title">
+        <div class="project-meta"><div class="project-heading"><span class="project-number">02<span aria-hidden="true"> - </span></span><h3 id="clarifytrial-title">ClarifyTrial</h3></div><p class="project-date">2026.07 - 2026.08</p><p class="role">Healthcare Agentic AI Challenge 2026<br>대상(1위) / Prescreen 팀원</p></div>
+        <div class="project-body"><p class="project-subtitle">인터랙티브 임상시험 추천 Multi-Agent 시스템</p><p class="stage-label">배경</p><p class="problem">환자 기록에 정보가 부족하면 임상시험 참여 조건을 정확하게 판정하기 어렵습니다. 부족한 정보를 확인 질문으로 보완하고 판정을 갱신하는 Multi-Agent 시스템을 설계했습니다.</p><p class="stage-label">구현</p><ul class="work-list"><li>환자 기록에서 부족한 정보를 탐지하고, <strong>여러 임상시험의 판정에 영향을 주는 범위가 넓은 정보부터 최대 3회 질문</strong>하도록 구현했습니다.</li><li>사용자 답변을 반영한 뒤, <strong>답변으로 영향을 받는 임상시험 조건만 재판정</strong>하도록 구성했습니다.</li><li>질문의 효과를 확인하기 위해 판정에 필수적인 정보를 마스킹했습니다. 가상 환자 <strong>30명 × 임상시험 5건</strong>의 150개 조합으로 판정 복원 정도를 평가했습니다.</li></ul><p class="outcome"><span>결과</span>확인 질문 3회 후 판정 일치율 <strong>85.3% → 99.3%</strong></p><div class="tags" aria-label="사용 기술"><span>LangGraph</span><span>Multi-Agent</span><span>Supervisor</span><span>정보 보완</span><span>조건 재판정</span></div><details class="architecture"><summary>구조 살펴보기</summary><figure class="flow" aria-label="clarifytrial 처리 흐름"><div class="flow-node light">환자 기록 · 임상시험 조건</div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-node dark">부족 정보 탐지 · 질문 우선순위</div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-node approval">확인 질문 · 사용자 답변<small>최대 3회</small></div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-node">관련 조건 재판정</div><figcaption>답변으로 영향을 받는 조건만 다시 판정합니다.</figcaption></figure></details></div>
+      </article>
+      <article class="project" id="medintech" aria-labelledby="medintech-title">
+        <div class="project-meta"><div class="project-heading"><span class="project-number">03<span aria-hidden="true"> - </span></span><h3 id="medintech-title">MedInTech</h3></div><p class="project-date">2025.12 - 2026.02</p><p class="role">Medical AI Team / AI Research Intern</p></div>
+        <div class="project-body"><p class="project-subtitle">위장 내시경 병변 탐지 모델 개선 및 배포 검증</p><p class="stage-label">배경</p><p class="problem">병원에 배포된 위장 내시경 Vision AI 솔루션에서 병변 미검출과 거품, 주름 오탐이 발생했습니다. 탐지 성능을 개선하고 실제 배포 환경에서 운영 가능한 모델을 선정하는 과제를 수행했습니다.</p><p class="stage-label">구현</p><ul class="work-list"><li>초기 증강과 하이퍼파라미터 튜닝에서 F2-score가 <strong>5~7% 감소</strong>하고 예측 수가 약 <strong>25% 감소</strong>했습니다. 추론 결과를 정량화하는 분석 코드를 구현해 실패 원인을 파악하고, 모델 구조와 데이터 구성으로 개선 범위를 넓혔습니다.</li><li><strong>Vision Transformer 백본의 DEIMv2 도입</strong>을 제안하고, 부족한 거품과 주름 데이터를 직접 선별해 보강했습니다.</li><li>모델을 ONNX로 변환한 뒤 RTX 5060에서 TensorRT 엔진을 생성했습니다. FP32 <strong>45FPS</strong>, BF16 <strong>55FPS</strong>로 입력 영상 <strong>30FPS</strong>를 상회하는 것을 확인하고, 정밀도를 유지하는 FP32를 선정했습니다.</li></ul><p class="outcome"><span>결과</span><strong>F2-score 11.6% 향상</strong> 및 서비스 모델 교체</p><p class="note">탐지 성능과 추론 속도를 함께 고려해 모델 교체를 제안했으며, 선정 모델은 2026년 7월부터 실제 서비스에 적용되어 운영되었습니다.</p><p class="additional-work"><span>추가 개발</span> Notion 기반 데이터 검색 도구와 GPU 및 메모리 사용량 대시보드를 구현해 데이터 탐색과 서버 자원 분배를 지원했습니다.</p><div class="tags" aria-label="사용 기술"><span>Python</span><span>PyTorch</span><span>DEIMv2</span><span>ONNX</span><span>TensorRT</span><span>Docker</span><span>GitLab</span></div></div>
+      </article>
+      <article class="project" id="automail" aria-labelledby="automail-title">
+        <div class="project-meta"><div class="project-heading"><span class="project-number">04<span aria-hidden="true"> - </span></span><h3 id="automail-title">Automail</h3></div><p class="project-date">2026.05 - 2026.08</p><p class="role">성균관대학교 총학생회 / 단독 설계 및 개발</p></div>
+        <div class="project-body"><p class="project-subtitle">멀티 Agent 기반 프로모션 제안 업무 자동화</p><p class="stage-label">배경</p><p class="problem">행사마다 약 <strong>300개 업체</strong>의 담당자 이메일을 검색하고 제안 메일을 작성 및 발송하는 데 <strong>10시간</strong>이 소요되었습니다. 이 반복 업무를 줄이기 위해 자동화 시스템을 설계했습니다.</p><p class="stage-label">구현</p><ul class="work-list"><li>검색, 작성, 발송을 각각 분리하고 <strong>Supervisor가 작업을 조율하는 LangGraph 구조</strong>로 연결했습니다.</li><li>검색 Agent에 웹 검색과 홈페이지 조회 Tool을 연결했습니다. 작성 Agent는 업체별 맞춤 도입부를 생성하고 고정 서식과 결합하도록 구성했습니다.</li><li>발송 전 <strong>Human-in-the-Loop 승인 단계</strong>를 두고, 사람이 확인한 메일만 Gmail API로 발송하도록 구현했습니다.</li></ul><p class="outcome"><span>결과</span>업무 소요 시간 <strong>90% 이상 단축</strong></p><p class="note">도입 후 유사한 프로모션 메일 업무가 필요한 타 부서로 활용이 확산되었습니다.</p><div class="tags" aria-label="사용 기술"><span>LangGraph</span><span>Supervisor</span><span>Tool Calling</span><span>Gmail API</span><span>Human-in-the-Loop</span></div><details class="architecture"><summary>구조 살펴보기</summary><figure class="flow" aria-label="automail 처리 흐름"><div class="flow-node light">업체 목록 · 제안 요청</div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-node dark">Supervisor <small>작업 배분 · 흐름 관리</small></div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-pair"><div class="flow-node">검색 Agent<small>웹 검색 · 홈페이지</small></div><span aria-hidden="true">→</span><div class="flow-node">작성 Agent<small>맞춤 도입부 · 서식</small></div></div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-node approval">사람의 승인 <small>Human-in-the-Loop</small></div><div class="flow-arrow" aria-hidden="true">↓</div><div class="flow-node light">Gmail API로 발송</div><figcaption>설명용으로 단순화한 구조입니다. 사람의 승인 이후 발송합니다.</figcaption></figure></details></div>
+      </article>
+      <article class="project" id="databrain" aria-labelledby="databrain-title">
+        <div class="project-meta"><div class="project-heading"><span class="project-number">05<span aria-hidden="true"> - </span></span><h3 id="databrain-title">Databrain <span class="inline-label">MAHA</span></h3></div><p class="project-date">2025.06 - 2025.08</p><p class="role">Software Development Team / SW Developer Intern</p></div>
+        <div class="project-body"><p class="project-subtitle">SaaS 마케팅 솔루션 MAHA 개발</p><p class="stage-label">배경</p><p class="problem">SaaS 마케팅 솔루션 MAHA에서 광고 성과 데이터를 조회하고 핵심 지표를 해석할 수 있도록 대시보드와 리포트 화면을 개발했습니다.</p><p class="stage-label">구현</p><ul class="work-list"><li>광고 계정별 성과 데이터를 API로 연동하고, <strong>테이블과 차트 기반 대시보드 및 리포트</strong>로 캠페인별 핵심 지표와 실적 흐름을 보여주었습니다.</li><li><strong>광고비, 노출수, 클릭수, ROAS의 4개 핵심 지표</strong>로 프롬프트를 구성해 AI 하이라이트를 자동 생성하고 결과를 표시하는 기능을 도입했습니다.</li></ul><p class="outcome"><span>결과</span>광고 성과 대시보드 및 LLM 기반 요약 기능 구현</p><div class="tags" aria-label="사용 기술"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>API 연동</span><span>LLM 활용</span></div></div>
+      </article>
+    </section>
+    <section id="capabilities" class="capabilities" aria-labelledby="capabilities-title"><div class="section-heading"><h2 id="capabilities-title">기술</h2></div>
+      <dl class="skills"><div><dt>Data Analysis</dt><dd>Python, 데이터 전처리, 파생변수 설계, GroupKFold, SHAP, LightGBM, CatBoost</dd></div><div><dt>Agent / LLM</dt><dd>LangGraph, Supervisor, Tool Calling, Human-in-the-Loop, LLM API</dd></div><div><dt>AI Engineering</dt><dd>Python, PyTorch, ONNX, TensorRT, Docker, GitLab</dd></div><div><dt>Service Development</dt><dd>Next.js, TypeScript, Tailwind CSS, API 연동</dd></div></dl>
+      
+    </section>
+  </main><footer><a href="#home">맨 위로 ↑</a></footer>
+</body>
+</html>
